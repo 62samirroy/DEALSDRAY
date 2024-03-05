@@ -1,0 +1,68 @@
+/* Dashboard.css */
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+  }
+  
+  .navbar-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    width: 50px;
+    margin-right: 10px;
+  }
+  
+  .nav-links {
+    list-style-type: none;
+    margin: 0;
+  }
+  
+  .nav-links li {
+    margin-right: 10px;
+    display: inline;
+    
+  }
+  
+  .nav-links li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  /* User Name */
+  .username {
+    margin-right: 10px;
+  }
+  
+  /* Logout Button */
+  .logout-button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  
+  .logout-button:hover {
+    background-color: #c82333;
+  }
+  
+  /* Welcome message */
+  .welcome-message {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
