@@ -68,62 +68,61 @@ const EmployeeList = ({ setOneUser }) => {
 
   return (
     <>
-      <Navbar/>
-    <div className="employee-list-container">
-      {/* Search Filter */}
-      <div className='scaech'>
-      <div className='scaech1'>
-      <input
-        type="text"
-        placeholder="Search..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-      
-      </div>
-      </div>
-      {/* Table */}
-      <table>
-        <thead>
-          <tr>
-            <th onClick={toggleSortOrder}>Name</th>
-            <th>Unique Id</th>
-            <th>Email</th>
-            <th>Mobile No</th>
-            <th>Designation</th>
-            <th>Gender</th>
-            <th>Course</th>
-            <th>Image</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {sortedEmployees.map(employee => (
-            <tr key={employee._id}>
-              <td>{employee.username}</td>
-              <td>{employee._id}</td>
-              <td>{employee.email}</td>
-              <td>{employee.mobile}</td>
-              <td>{employee.designation}</td>
-              <td>{employee.gender}</td>
-              <td>{employee.courses}</td>
-              <td><img className="employee-image" src={employee.img} alt="Employee" /></td>
-              <td>
-                <Link className="link" to={`/EmployeeEdit/${employee._id}`} >
-                  <button onClick={() => setOneUser(employee)}>Edit</button>
-                </Link>
-                <button className='delete-button' onClick={() => handleDeleteEmployee(employee._id)}>Delete</button>
-              </td>
+      <div className="employee-list-container">
+        {/* Search Filter */}
+        <div className='scaech'>
+          <div className='scaech1'>
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+
+          </div>
+        </div>
+        {/* Table */}
+        <table>
+          <thead>
+            <tr>
+              <th onClick={toggleSortOrder}>Name</th>
+              <th>Unique Id</th>
+              <th>Email</th>
+              <th>Mobile No</th>
+              <th>Designation</th>
+              <th>Gender</th>
+              <th>Course</th>
+              <th>Image</th>
+              <th>Action</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-      <div className='buttondiv'>
-      <Link className="link" to="/EmployeeForm">
-        <button className='button1'>Create employee</button>
-      </Link>
+          </thead>
+          <tbody>
+            {sortedEmployees.map(employee => (
+              <tr key={employee._id}>
+                <td>{employee.username}</td>
+                <td>{employee._id}</td>
+                <td>{employee.email}</td>
+                <td>{employee.mobile}</td>
+                <td>{employee.designation}</td>
+                <td>{employee.gender}</td>
+                <td>{employee.courses}</td>
+                <td><img className="employee-image" src={employee.img} alt="Employee" /></td>
+                <td>
+                <Link   className="link" to={`/employeeedit/${employee._id}`} onClick={() => setOneUser(employee)}>
+                <button>Edit</button>
+              </Link>
+                  <button className='delete-button' onClick={() => handleDeleteEmployee(employee._id)}>Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <div className='buttondiv'>
+          <Link className="link" to="/EmployeeForm">
+            <button className='button1'>Create employee</button>
+          </Link>
+        </div>
       </div>
-    </div>
     </>
   );
 };

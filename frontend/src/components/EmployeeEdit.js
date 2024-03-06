@@ -2,9 +2,12 @@ import React, { useContext, useState, useEffect } from 'react';
 import { MongoDataContext } from '../MongoDataContext'; // Import the MongoDataContext
 import './EmployeeEdit.css'; // Import CSS file
 import Navbar from './Navbar';
+import { useParams } from 'react-router-dom';
 
-const EmployeeEdit = ({ oneUser }) => {
+
+const EmployeeEdit = () => {
   const mongoData = useContext(MongoDataContext);
+
   const [employeeData, setEmployeeData] = useState({
     username: '',
     email: '',
@@ -16,10 +19,11 @@ const EmployeeEdit = ({ oneUser }) => {
   });
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const { id } = useParams();
 
   useEffect(() => {
     if (mongoData.length > 0) {
-      const index = mongoData.findIndex(item => item._id === oneUser.match.params.id);
+      const index = mongoData.findIndex(item => item._id === id);
       const firstItem = mongoData[index];
       setEmployeeData({
         username: firstItem.username,
@@ -31,12 +35,12 @@ const EmployeeEdit = ({ oneUser }) => {
         img: firstItem.img
       });
     }
-  }, [mongoData, oneUser.match.params.id]);
+  }, [mongoData,id]);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      const index = mongoData.findIndex(item => item._id === oneUser.match.params.id);
+      const index = mongoData.findIndex(item => item._id === id);
       const response = await fetch(`http://localhost:5000/api/employee/${mongoData[index]._id}`, {
         method: 'PUT',
         headers: {
@@ -73,7 +77,6 @@ const EmployeeEdit = ({ oneUser }) => {
 
   return (
     <>
-    <Navbar/>
     <div className='firstdiv'>
     <div className="employee-form-container">
       <h2>Edit Employee</h2>

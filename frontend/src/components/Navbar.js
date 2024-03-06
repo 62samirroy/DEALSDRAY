@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
+
 import './Navbar.css';
 
-const Navbar = () => {
-  const history = useHistory();
+const Navbar = ({setLoggedIn}) => {
+  const navigate = useNavigate(); // Initialize navigate function
   const [username, setUsername] = useState('');
 
   useEffect(() => {
@@ -20,7 +21,8 @@ const Navbar = () => {
     // Clear local storage
     localStorage.clear();
     // Redirect to login page
-    history.push('/');
+    setLoggedIn(false)
+    navigate('/'); // Redirect to the home page
   };
 
   return (
@@ -32,10 +34,12 @@ const Navbar = () => {
           {/* Logo */}
           <img src="/my.jpg" alt="Logo" className="logo" />
           {/* Home/Employees List */}
-          <ul className="nav-links">
-            <li><Link to="/dashboard">Home</Link></li>
-            <li><Link to="/EmployeeList">Employees List</Link></li>
-          </ul>
+          <nav>
+            <ul  className="nav-links">
+              <li><Link to="/dashboard">Home</Link></li>
+              <li><Link to="/employeelist">Employee List</Link></li>
+            </ul>
+          </nav>
         </div>
         {/* Right side */}
         <div className="navbar-right">

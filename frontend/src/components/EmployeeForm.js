@@ -45,7 +45,6 @@ const EmployeeForm = () => {
 
   return (
     <>
-    <Navbar/>
     <div className='firstdiv'>
     <div className="employee-form-container">
       <h2 >Employee Form</h2>
